@@ -64,20 +64,23 @@ validar_ntp(){
 }
 
 verificar_discotamano(){
-    prueba_porcentaje=$(df -h | grep -E "^/dev" | awk '{print $5}' | sed 's/%//g' | sort -n | tail)
+    prueba_porcentaje=$(df -h -P | grep -E "^/dev" | awk '{print $5}' | sed 's/%//g' | sort -n | tail)
     while read -r i;do
         uso+=("$i")
     done <<< "$prueba_porcentaje"
     for i in "${uso[@]}"; do
          # printf "%s " "$i"
         if [[ "$i" -ge 80 ]];then
-            disco=$(df -h | grep -E "^/dev" | grep -E "$i%"| sort -n | head -n 1 | awk '{print $1}')
-            printf "\033[31m[GRAVE]\033[0m Disco: %s con poca memoria\n" "$disco" 1>&2
-        elif [[ "$i" -lt 60 ]] && [[ "$i" -gt 45 ]] ;then
+            disco=$(df -h -P | grep -E "^/dev" | grep -E "$i%"| sort -n | head -n 1 | awk '{print $1}')
+            printf "\033[31m[PELIGRO]\033[0m Disco: %s con poca memoria (USO: %s)\n" "$disco" "$i" 1>&2
+        elif [[ "$i" -lt 79 ]] && [[ "$i" -gt 51 ]] ;then
             disco=$(df -h | grep -E "^/dev" | grep -E "$i%"| sort -n | head -n 1  | awk '{print $1}')
-            printf "\033[33m[CUIDADO]\033[0m Disco: %s  a mitad de tamaño\n" "$disco"
+            printf "\033[33m[ATENCION]\033[0m Disco: %s con mucha información (USO: %s)\n" "$disco" "$i"
+        elif [[ "$i" -lt 50 ]] && [[ "$i" -gt 45 ]] ;then
+            disco=$(df -h | grep -E "^/dev" | grep -E "$i%"| sort -n | head -n 1  | awk '{print $1}')
+            printf "\033[33m[ATENCION]\033[0m Disco: %s  a mitad de tamaño o cerca (USO: %s)\n" "$disco" "$i"
         else
-            disco=$(df -h | grep -E "^/dev" | grep -E "$i%"| sort -n | head -n 1 | awk '{print $1}')
+            disco=$(df -h -P | grep -E "^/dev" | grep -E "$i%"| sort -n | head -n 1 | awk '{print $1}')
             printf "Disco %s con %s%% de uso\n" "$disco" "$i"
         fi
     done
