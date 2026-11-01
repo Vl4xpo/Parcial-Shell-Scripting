@@ -30,6 +30,7 @@ leer_archivo(){
     return 0
 }
 
+# Se soluciono el problema con el tamanno cambiando la palabra por capacidad para que se visualice en el reporte
 crear_analisis_archivo(){
     # Aqui en si es para generar un reporte del archivo y colocar mensajes en los discos con colores en ese baclup-reporte
     # En si copi a la carpeta reporte osea el analisis final
@@ -76,7 +77,7 @@ salida_reporte_file(){
         printf "Servidor : %s\n" "$(grep "$disco" ""$archivo | cut -d ' ' -f 1)" >> "$1"
         printf "Nombre en Sistema de ficheros: %s\n" "$(grep "$disco" ""$archivo | cut -d ' ' -f 2)" >> "$1"
         printf "Tipo de disco: %s\n" "$(grep "$disco" ""$archivo | cut -d ' ' -f 3)" >> "$ruta"
-        printf "Tamaño del disco total: %s\n" "$(grep "$disco" ""$archivo | cut -d ' ' -f 4)" >> "$ruta"
+        printf "Capacidad del disco total: %s\n" "$(grep "$disco" ""$archivo | cut -d ' ' -f 4)" >> "$ruta"
         printf "Uso del disco: %s %% \n" "${uso_disco_registro[$disco]}" >> "$1"
         printf "Indicadores que se encontraron:\n" >> "$1"
         # Aqui solamente son las condicioens tipo para
