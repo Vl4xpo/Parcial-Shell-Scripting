@@ -11,7 +11,6 @@ declare ubicacion="$proyecto/logs"
 declare ruta="$ubicacion/$salida"
 declare conteo_errores=0
 # Ojito camibe el o la redireccion >> hacia la var ruta por tee para que se pueda ver los logs ademas de annadir con su parametro -a
-# Función de crear un file
 
 validar_directoriosalida(){
     # Valida y crea si es enecesario para ver si esta logs
@@ -29,6 +28,7 @@ validar_directoriosalida(){
     fi
 }
 
+# Función de crear un archvio
 crear_archivo(){
     if [[ ! -f "$1" ]]; then
         touch "$1"
@@ -76,16 +76,24 @@ cambiar_permisos(){
 
 eliminar_archivos(){
     # Usa el parametro -i para eliminar de forma interactiva
+    # Ahora permite o puede eliminarse varios archivos mediante un array
+    # Asi que aqui manjeo errores pero del rm se captura su error si es 0 se elimino si es 1 o mas pues no se elimino
     # Y luego valida
-    rm -i "$1"
-    if [[ -f "$1" ]]; then
-        printf "%s - OK - El archivo '%s' fue eliminado exitosamente\n" "$fecha" "$1" | tee -a "$ruta"
-        return 0
-    else
-        printf "%s - ERROR - El archivo '%s' no fue eliminado exitosamente\n" "$fecha" "$1" 2>&1 | tee -a "$ruta"
-        ((conteo_errores++))
-        return 1
-    fi
+    read -a archivo_eliminar <<< "$archivo"
+    # for i in "${archivo_eliminar[@]}"; do  # solo probando si llega al array
+    #     printf "%s \n" "$i"
+    # done
+    # printf "\n"
+    for i in "${archivo_eliminar[@]}"; do
+        rm -i "$i"
+        if [[ "$?" -eq 0 ]] && [[ ! -e "$i" ]] ; then
+            printf "%s - OK - El archivo '%s' fue eliminado exitosamente\n" "$fecha" "$i" | tee -a "$ruta"
+        else
+            printf "%s - ERROR - El archivo '%s' no fue eliminado exitosamente\n" "$fecha" "$i" 2>&1 | tee -a "$ruta"
+            ((conteo_errores++))
+        fi
+    done
+    return 0
 }
 
 validar_directoriosalida # para verificar antes del while para validar carpetae

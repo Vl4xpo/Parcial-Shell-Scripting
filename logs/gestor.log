@@ -1,0 +1,95 @@
+01-11-2026:22:53:41 - OK - El archivo 'hola.txt' fue creado exitosamente
+01-11-2026:22:53:41 - OK - El archivo 'hola2.txt' fue creado exitosamente
+01-11-2026:22:54:17 - ERROR - El archivo '' no fue eliminado exitosamente
+01-11-2026:22:58:36 - ERROR - El archivo './hola.txt ./hola2.txt' no fue eliminado exitosamente
+01-11-2026:22:59:11 - ERROR - El archivo './hola.txt ./hola2.txt' no fue eliminado exitosamente
+01-11-2026:23:10:19 - ERROR - El archivo '' no fue eliminado exitosamente
+01-11-2026:23:21:48 - ERROR - El archivo './hola.txt' no fue eliminado exitosamente
+01-11-2026:23:21:48 - ERROR - El archivo './hola2.txt' no fue eliminado exitosamente
+01-11-2026:23:22:40 - OK - El archivo 'hola.txt' fue creado exitosamente
+01-11-2026:23:22:40 - OK - El archivo 'hola2.txt' fue creado exitosamente
+01-11-2026:23:22:40 - ERROR - El archivo './hola2.txt' no fue eliminado exitosamente
+01-11-2026:23:23:38 - OK - El archivo 'hola.txt' fue creado exitosamente
+01-11-2026:23:23:38 - OK - El archivo 'hola2.txt' fue creado exitosamente
+01-11-2026:23:23:38 - ERROR - El archivo './hola.txt' no fue eliminado exitosamente
+01-11-2026:23:23:38 - ERROR - El archivo './hola2.txt' no fue eliminado exitosamente
+01-11-2026:23:24:11 - OK - El archivo 'hola.txt' fue creado exitosamente
+01-11-2026:23:24:11 - OK - El archivo 'hola2.txt' fue creado exitosamente
+01-11-2026:23:24:11 - ERROR - El archivo './hola.txt' no fue eliminado exitosamente
+01-11-2026:23:24:11 - ERROR - El archivo './hola2.txt' no fue eliminado exitosamente
+01-11-2026:23:27:38 - OK - El archivo 'hola.txt' fue creado exitosamente
+01-11-2026:23:27:38 - OK - El archivo 'hola2.txt' fue creado exitosamente
+01-11-2026:23:27:38 - ERROR - El archivo './hola.txt' no fue eliminado exitosamente
+01-11-2026:23:27:38 - ERROR - El archivo './hola2.txt' no fue eliminado exitosamente
+01-11-2026:23:28:15 - OK - El archivo 'hola.txt' fue creado exitosamente
+01-11-2026:23:28:15 - OK - El archivo 'hola2.txt' fue creado exitosamente
+01-11-2026:23:28:15 - OK - El archivo 'hola3.txt' fue creado exitosamente
+01-11-2026:23:28:15 - OK - El archivo './hola.txt' fue eliminado exitosamente
+01-11-2026:23:28:15 - OK - El archivo './hola2.txt' fue eliminado exitosamente
+01-11-2026:23:28:15 - OK - El archivo './hla.txt' fue eliminado exitosamente
+01-11-2026:23:30:59 - OK - El archivo 'hola.txt' fue creado exitosamente
+01-11-2026:23:30:59 - OK - El archivo 'hola2.txt' fue creado exitosamente
+01-11-2026:23:30:59 - OK - El archivo './hola.txt' fue eliminado exitosamente
+01-11-2026:23:30:59 - OK - El archivo './hola2.txt' fue eliminado exitosamente
+01-11-2026:23:30:59 - ERROR - El archivo './hola3.txt' no fue eliminado exitosamente
+01-11-2026:23:31:49 - OK - El archivo './hola3.txt' fue eliminado exitosamente
+01-11-2026:23:31:49 - OK - El archivo './hola4.txt' fue eliminado exitosamente
+01-11-2026:23:37:41 - OK - El archivo 'hola.txt' fue creado exitosamente
+01-11-2026:23:37:41 - OK - El archivo 'hola2.txt' fue creado exitosamente
+01-11-2026:23:37:41 - OK - El archivo 'hola3.txt' fue creado exitosamente
+01-11-2026:23:37:41 - OK - El archivo './hola.txt' fue eliminado exitosamente
+01-11-2026:23:37:41 - OK - El archivo './hola2.txt' fue eliminado exitosamente
+01-11-2026:23:37:41 - ERROR - El archivo './hola3.txt' no fue eliminado exitosamente
+01-11-2026:23:37:41 - OK - El archivo './hola3.txt' fue eliminado exitosamente
+01-11-2026:23:37:41 - OK - El archivo './hola4.txt' fue eliminado exitosamente
+01-11-2026:23:40:21 - OK - El archivo 'hola.txt' fue creado exitosamente
+01-11-2026:23:40:21 - OK - El archivo 'hola2.txt' fue creado exitosamente
+01-11-2026:23:40:21 - OK - El archivo 'hola3.txt' fue creado exitosamente
+01-11-2026:23:40:21 - ERROR - El archivo './hola.txt' no fue eliminado exitosamente
+01-11-2026:23:40:21 - ERROR - El archivo './hola2.txt' no fue eliminado exitosamente
+01-11-2026:23:40:21 - ERROR - El archivo './hola3.txt' no fue eliminado exitosamente
+01-11-2026:23:40:21 - ERROR - El archivo './hola4.txt' no fue eliminado exitosamente
+01-11-2026:23:42:39 - ERROR - El archivo './hola3.txt' no fue eliminado exitosamente
+01-11-2026:23:42:39 - ERROR - El archivo './hola5.txt' no fue eliminado exitosamente
+01-11-2026:23:44:13 - OK - El archivo 'hola.txt' fue creado exitosamente
+01-11-2026:23:44:13 - OK - El archivo 'hola3.txt' fue creado exitosamente
+01-11-2026:23:44:13 - OK - El archivo 'hola4.txt' fue creado exitosamente
+01-11-2026:23:44:13 - OK - El archivo './hola.txt' fue eliminado exitosamente
+01-11-2026:23:44:13 - OK - El archivo './hola2.txt' fue eliminado exitosamente
+01-11-2026:23:44:13 - OK - El archivo './hola3.txt' fue eliminado exitosamente
+01-11-2026:23:44:13 - OK - El archivo './hola4.txt' fue eliminado exitosamente
+01-11-2026:23:44:13 - OK - El archivo './hola5.txt' fue eliminado exitosamente
+01-11-2026:23:45:51 - OK - El archivo 'hola.txt' fue creado exitosamente
+01-11-2026:23:45:51 - OK - El archivo 'hola3.txt' fue creado exitosamente
+01-11-2026:23:45:51 - OK - El archivo 'hola4.txt' fue creado exitosamente
+01-11-2026:23:45:51 - OK - El archivo './hola.txt' fue eliminado exitosamente
+01-11-2026:23:45:51 - OK - El archivo './hola2.txt' fue eliminado exitosamente
+01-11-2026:23:45:51 - ERROR - El archivo './hola4.txt' no fue eliminado exitosamente
+01-11-2026:23:46:57 - OK - El archivo './hola.txt' fue eliminado exitosamente
+01-11-2026:23:46:57 - OK - El archivo './hola3.txt' fue eliminado exitosamente
+01-11-2026:23:46:57 - ERROR - El archivo './hola4.txt' no fue eliminado exitosamente
+01-11-2026:23:48:06 - OK - El archivo './hola3.txt' fue eliminado exitosamente
+01-11-2026:23:48:06 - OK - El archivo './hola4.txt' fue eliminado exitosamente
+01-11-2026:23:48:47 - ERROR - El archivo './hola3.txt' no fue eliminado exitosamente
+01-11-2026:23:48:47 - OK - El archivo './hola4.txt' fue eliminado exitosamente
+01-11-2026:23:48:47 - OK - El archivo 'hola.txt' fue creado exitosamente
+01-11-2026:23:48:47 - OK - El archivo 'hola3.txt' fue creado exitosamente
+01-11-2026:23:48:47 - OK - El archivo 'hola2.txt' fue creado exitosamente
+01-11-2026:23:48:47 - OK - El archivo 'hola4.txt' fue creado exitosamente
+01-11-2026:23:48:47 - OK - El archivo './hola.txt' fue eliminado exitosamente
+01-11-2026:23:48:47 - OK - El archivo './hola2.txt' fue eliminado exitosamente
+01-11-2026:23:48:47 - OK - El archivo './hola3.txt' fue eliminado exitosamente
+01-11-2026:23:48:47 - OK - El archivo './hola4.txt' fue eliminado exitosamente
+01-11-2026:23:48:47 - ERROR - El archivo './hooola4.txt' no fue eliminado exitosamente
+01-11-2026:23:50:56 - OK - El archivo './hola.txt' fue eliminado exitosamente
+01-11-2026:23:50:56 - ERROR - El archivo './hola2.txt' no fue eliminado exitosamente
+01-11-2026:23:50:56 - ERROR - El archivo './hoooola.txt' no fue eliminado exitosamente
+01-11-2026:23:50:56 - ERROR - El archivo './hola4.txt' no fue eliminado exitosamente
+01-11-2026:23:50:56 - OK - El archivo './hola4.txt' fue eliminado exitosamente
+01-11-2026:23:50:56 - ERROR - El archivo './hola.txt' no fue eliminado exitosamente
+01-11-2026:23:56:09 - OK - El archivo 'hola.txt' fue creado exitosamente
+01-11-2026:23:56:09 - OK - El archivo 'hola2.txt' fue creado exitosamente
+01-11-2026:23:56:09 - OK - El archivo './hola.txt' fue eliminado exitosamente
+01-11-2026:23:56:09 - ERROR - El archivo './hola1.txt' no fue eliminado exitosamente
+01-11-2026:23:56:09 - ERROR - El archivo './hola2.txt' no fue eliminado exitosamente
+01-11-2026:23:56:09 - OK - El archivo './hola2.txt' fue eliminado exitosamente
