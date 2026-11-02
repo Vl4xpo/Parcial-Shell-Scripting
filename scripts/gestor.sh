@@ -43,18 +43,20 @@ crear_archivo(){
 
 # Funcion para copiar archivo
 copiar_archivo(){
+    # Nos permte copiar varios archivos en un dir especifico pero nopueds cambiar el nombre de las copias me refiero
+    read -a archivo_copiar <<< "$archivo"
     # Verifica que el archivo fuese copiado
-    cp "$1" "$2"
-    if [[ -f "$2" ]]; then
-        printf "%s - OK - El archivo '%s' fue copiado exitosamente\n" "$fecha" "$1" | tee -a "$ruta"
-        printf "Ubicación de la copia : '%s'\n" "$(find "$2")"
-        return 0
-    else
-        printf "%s - ERROR - El archivo '%s' no pudo copiarse\n" "$fecha" "$2" 2>&1 | tee -a "$ruta"
-        ((conteo_errores++))
-        return 1
-    fi
-
+    for i in "${archivo_copiar[@]}"; do
+        cp "$i" "$2"
+        if [[ "$?" -eq 0 ]]; then
+            printf "%s - OK - El archivo '%s' fue copiado exitosamente\n" "$fecha" "$i" | tee -a "$ruta"
+            printf "Ubicación de la copia : '%s'\n" "$2"
+        else
+            printf "%s - ERROR - El archivo '%s' no pudo copiarse\n" "$fecha" "$i" 2>&1 | tee -a "$ruta"
+            ((conteo_errores++))
+        fi
+    done
+    return 0
 }
 
 cambiar_permisos(){
@@ -116,7 +118,7 @@ while true; do
             ;;
         2)
             read -p "Ingrese el archivo a copiar: " archivo
-            read -p "Ingrese el archivo a copiar: " archivo2
+            read -p "Ingrese la ubicación en donde se copiaran: " archivo2
             copiar_archivo "$archivo" "$archivo2"
             ;;
         3)
