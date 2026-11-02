@@ -1,0 +1,9 @@
+rocky /dev/sda1 ext4 100G 50%
+ubuntu /dev/sda2 ext4 380G 89%
+arch /dev/sdb1 ext4 250G 67%
+gentoo /dev/sdb2 ext4 125G 54%
+antix /dev/sdc1 btrfs 460G 33%
+freebsd /dev/sdc2 zfs 700G 32%
+slackware /dev/sdd1 zfs 250G 45%
+linuxmint /dev/sdd2 ext4 200G 67%
+fedora /dev/sdf1 xfs 400G 27%
