@@ -3,8 +3,27 @@
 declare usuario_actual=$(whoami)
 declare -a usuario_grupos
 declare usuario_permisos
-declare fecha=$(date +'%Y-%m-%d')
+declare fecha=$(date +'%Y-%m-%d-%Hhr-%Mmin')
 declare dia=$(date +'%A')
+declare salida="$fecha-sistema.reporte"
+# Para ubiicar dodne se ejecuta y donde guardar la salida osea repote
+declare directorio_script="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+declare proyecto="$(dirname "$directorio_script")"
+declare ubicacion="$proyecto/reporte"
+declare ruta="$ubicacion/$salida"
+
+# VALIDAR si existe /reporte
+validar_directorio(){
+    if [[ -d "$ubicacion" ]]; then
+       printf "Se guardara un reporte en : %s\n" "$ruta"
+       return 0
+    else
+       mkdir -p "$ruta"
+       printf "No habia carpeta '/reporte' se ha generado en : %s\n" "$ruta"
+       return 1
+    fi
+}
+
 
 grupos_usuario()
 {
@@ -72,41 +91,41 @@ verificar_discotamano(){
          # printf "%s " "$i"
         if [[ "$i" -ge 80 ]];then
             disco=$(df -h -P | grep -E "^/dev" | grep -E "$i%"| sort -n | head -n 1 | awk '{print $1}')
-            printf "\033[31m[PELIGRO]\033[0m Disco: %s con poca memoria (USO: %s)\n" "$disco" "$i" 1>&2
+            printf "[PELIGRO] Disco: %s con poca memoria (USO: %s%%)\n" "$disco" "$i" 1>&2 | tee -a "$ruta"
         elif [[ "$i" -lt 79 ]] && [[ "$i" -gt 51 ]] ;then
             disco=$(df -h | grep -E "^/dev" | grep -E "$i%"| sort -n | head -n 1  | awk '{print $1}')
-            printf "\033[33m[ATENCION]\033[0m Disco: %s con mucha información (USO: %s)\n" "$disco" "$i"
+            printf "[ATENCION] Disco: %s con mucha información (USO: %s%%)\n" "$disco" "$i" | tee -a "$ruta"
         elif [[ "$i" -lt 50 ]] && [[ "$i" -gt 45 ]] ;then
             disco=$(df -h | grep -E "^/dev" | grep -E "$i%"| sort -n | head -n 1  | awk '{print $1}')
-            printf "\033[33m[ATENCION]\033[0m Disco: %s  a mitad de tamaño o cerca (USO: %s)\n" "$disco" "$i"
+            printf "[ATENCION] Disco: %s  a mitad de tamaño o cerca (USO: %s%%)\n" "$disco" "$i" | tee -a "$ruta"
         else
-            disco=$(df -h -P | grep -E "^/dev" | grep -E "$i%"| sort -n | head -n 1 | awk '{print $1}')
+            disco=$(df -h -P | grep -E "^/dev" | grep -E "$i%"| sort -n | head -n 1 | awk '{print $1}') | tee -a "$ruta"
             printf "Disco %s con %s%% de uso\n" "$disco" "$i"
         fi
     done
     unset uso
 }
 
-
+validar_directorio
 grupos_usuario
 # echo "$usuario_grupos"
 
-printf "\-- Información del usuario (%s - %s)--\ \n" "$fecha" "$dia"
-printf "Usuario: %s\t\tUID: %s\nGrupos: "  "$usuario_actual" "$(id -u $usuario_actual)"
-printf "%s "   "${usuario_grupos[@]}"
-printf "\n"
+printf "\-- Información del usuario (%s - %s)--\ \n" "$fecha" "$dia" | tee -a "$ruta"
+printf "Usuario: %s\t\tUID: %s\nGrupos: "  "$usuario_actual" "$(id -u $usuario_actual)" | tee -a "$ruta"
+printf "%s "   "${usuario_grupos[@]}" | tee -a "$ruta"
+printf "\n" | tee -a "$ruta"
 privilegios_elevados
-printf "Privilegios administrados por: %s\n[NOTA]: %s\n" "$binarios" "$mensaje"
-printf "Momento del inicio del equipo: %s\n" "$(uptime -s)"
+printf "Privilegios administrados por: %s\n[NOTA]: %s\n" "$binarios" "$mensaje" | tee -a "$ruta"
+printf "Momento del inicio del equipo: %s\n" "$(uptime -s)" | tee -a "$ruta"
 validar_ntp
-printf "Time de NTP : %s\tSincronizado: %s\n" "$mensaje" "$mensaje2"
-printf "\nInformación Maquina Actual\n"
-printf "Sistema operativo: %s\n" "$(uname -o)"
-printf "Distribución: %s\n" "$(cat /etc/os-release | grep -E "^NAME" | cut -d '"' -f 2)"
-printf "Kernel: %s-%s\t-- Versión: %s\t-- Arquitectura: %s\n" "$(uname -s)" "$(uname -r | cut -d '-' -f 2)" "$(uname -r | cut -d '-' -f 1)" "$(uname -m)"
-printf "Nombre del equipo: %s\n" "$(uname -n)"
-printf "\nInformación del Disco\n"
-printf "Tamaño y Ruta de montaje\n"
-printf "%s" "$(df -h | grep -vE '^Filesystem|tmpfs|cdrom|none|udev|shm')"
-printf "\nUso de disco\n"
+printf "Time de NTP : %s\tSincronizado: %s\n" "$mensaje" "$mensaje2" | tee -a "$ruta"
+printf "\nInformación Maquina Actual\n" | tee -a "$ruta"
+printf "Sistema operativo: %s\n" "$(uname -o)" | tee -a "$ruta"
+printf "Distribución: %s\n" "$(cat /etc/os-release | grep -E "^NAME" | cut -d '"' -f 2)" | tee -a "$ruta"
+printf "Kernel: %s-%s\t-- Versión: %s\t-- Arquitectura: %s\n" "$(uname -s)" "$(uname -r | cut -d '-' -f 2)" "$(uname -r | cut -d '-' -f 1)" "$(uname -m)" | tee -a "$ruta"
+printf "Nombre del equipo: %s\n" "$(uname -n)" | tee -a "$ruta"
+printf "\nInformación del Disco\n" | tee -a "$ruta"
+printf "Tamaño y Ruta de montaje\n" | tee -a "$ruta"
+printf "%s" "$(df -h | grep -vE '^Filesystem|tmpfs|cdrom|none|udev|shm')" | tee -a "$ruta"
+printf "\nUso de disco\n" | tee -a "$ruta"
 verificar_discotamano
