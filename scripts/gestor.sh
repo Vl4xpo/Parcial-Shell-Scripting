@@ -30,15 +30,26 @@ validar_directoriosalida(){
 
 # Función de crear un archvio
 crear_archivo(){
-    if [[ ! -f "$1" ]]; then
-        touch "$1"
-        printf "%s - OK - El archivo '%s' fue creado exitosamente\n" "$fecha" "$1" | tee -a "$ruta"
-        return 0
-    else
-        printf "%s - CUIDADO - El archvio '%s' ya existe\n" "$fecha" "$1" 2>&1 | tee -a "$ruta"
-        ((conteo_errores++))
-        return 1
-    fi
+    # Crear archivos basicamente
+    # Ademas de crear permite crear variso archivos gracias al array
+    # Valida si el archivo fue creado y si no lo fue
+    read -a archivo_crear <<< "$archivo"
+    for i in "${archivo_crear[@]}"; do
+        find "$i" > /dev/null
+        if [[ "$?" -eq 0 ]] ; then
+            printf "%s - ERROR - El archivo '%s' ya existe\n" "$fecha" "$i" 2>&1 | tee -a "$ruta"
+            ((conteo_errores++))
+            continue
+        fi
+        touch "$i"
+        if [[ "$?" -eq 0 ]]; then
+            printf "%s - OK - El archivo '%s' fue creado exitosamente\n" "$fecha" "$i" | tee -a "$ruta"
+        else
+            printf "%s - ERROR - El archivo '%s' no se logro crear\n" "$fecha" "$i" 2>&1 | tee -a "$ruta"
+            ((conteo_errores++))
+        fi
+    done
+    return 0
 }
 
 # Funcion para copiar archivo
@@ -113,6 +124,7 @@ while true; do
     # Lectuura de la opcion y llama a las funciones con los argumentos necesarios
     case $opcion in
         1)
+            printf "Incluye la ubicación\n"
             read -p "Ingrese el archivo a crear: " archivo
             crear_archivo "$archivo"
             ;;
