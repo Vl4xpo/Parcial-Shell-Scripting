@@ -19,7 +19,7 @@ for i in "${argumento[@]}"; do
     if [[ "$i" == "--auto" ]] || [[ "$i" == "-a" ]]; then
         printf "Modo automatico\n" 1>&2
         ((modo++))
-        break
+        continue
     elif [[ ! -f "$i" ]] && [[ ! -r "$i" ]]; then
         printf "[03] Problema - Verificar estado de los argumenntos\n" 1>&2
         exit 3
