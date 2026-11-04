@@ -81,6 +81,7 @@ Permite :
 Ademas valida si esta instalado cron para poder usarse
 
 ![salida-scrip5](CosasParaInforme/salida_script5.png)
+
 ##Autores y Colaboradores
 -**Brayan Alvares Paredes** - *Desarrollo de Scrips de Bash*
 -**Jhosy Dengelo Rojas Ramos** - *Desarrollo de Scrips de Bash*
