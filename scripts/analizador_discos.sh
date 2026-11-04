@@ -67,8 +67,8 @@ crear_analisis_archivo(){
         printf "Nota coloque solamente la ruta quitando el '/' al final de la ruta\n"
         printf "Y empieza el nombre o salida sin '/'\n"
         printf "Usando '~' al inicio usarlo en ruta - en nombre colocar su ubicacion desde HOME\n"
-        read -p "Ingrese la ruta donde desea guardar el archivo: " alterno
-        read -p "Nombre del archivo.report: " salida
+        read -e -p "Ingrese la ruta donde desea guardar el archivo: " alterno
+        read -e -p "Nombre del archivo.report: " salida
         if [[ "$alterno" == "~" ]]; then
             touch "$HOME/$salida.report"
             printf "Ruta del archivo : %s\n" "$HOME/$salida.report"

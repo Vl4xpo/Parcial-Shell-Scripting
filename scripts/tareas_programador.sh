@@ -1,9 +1,14 @@
 #!/usr/bin/bash
-
-declare usuario=$(whoami)
+declare usuario="$(whoami)"
+declare fecha_logs=$(date +'%Y-%m-%d-%H:%M:%S')
+declare salida="tareas_programador.log"
+declare directorio_script="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+declare proyecto="$(dirname "$directorio_script")"
+declare ubicacion_logs="$proyecto/logs"
+declare ruta="$ubicacion_logs/$salida"
 # validar si tiene cron isntalado
 if [[ -e  /usr/bin/crontab ]] || [[ -e /etc/cron.d/ ]] ; then
-    printf "Cron esta instalado\n"
+    printf "%s - OK - Cron esta instalado\n"
 else
     printf "Cron no esta instalado - busca cron o cronie\n"
     exit 1
@@ -17,10 +22,10 @@ crear_tarea(){
     printf "Verificando: \n"
     grep "$1" "$ubicacion"
     if [[ "$?" -eq 0 ]]; then
-        printf "Tarea agregada\n"
+        printf "%s - OK - Tarea agregada\n" "$fecha_logs" 2>&1 | tee -a "$ruta"
         return 0
     else
-        printf "Tarea no agregada algún error\n"
+        printf "%s - ERROR - Tarea no agregada verifica\n" "$fecha_logs" 2>&1 | tee -a "$ruta"
         return 1
     fi
 }
@@ -30,6 +35,7 @@ eliminar_todo(){
     printf "Vistazo anteriorr: \n"
     crontab -l 2>/dev/null
     crontab -r
+    printf "%s - CUIDADO - Se elimino todas las tareas\n" "$fecha_logs" 2>&1 | tee -a "$ruta"
     return 0
 }
 
@@ -62,11 +68,13 @@ while true;do
             printf "\n\n"
             ;;
         3)  crontab -e
+            printf "%s - ATENCION - se ha modificado las tareas\n" "$fecha_logs" 2>&1 | tee -a "$ruta"
             ;;
         4)  eliminar_todo
             printf "Todas las tareas programadas para el usuario '%s' han sido eliminadas\n\n" "$usuario"
             ;;
         5) printf "\n\nSaliendo" ; exit 0 ;;
         *) printf " = Opcion no valida vuelve a intrdocir un valor adecuado = \n\n"
+           printf "%s - ATENCION - Opciono no valida ingresadaa\n" "$fecha_logs" 2>&1 | tee -a "$ruta"
     esac
 done

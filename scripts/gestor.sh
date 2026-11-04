@@ -33,7 +33,7 @@ crear_archivo(){
     # Crear archivos basicamente
     # Ademas de crear permite crear variso archivos gracias al array
     # Valida si el archivo fue creado y si no lo fue
-    read -a archivo_crear <<< "$archivo"
+    read -a archivo_crear <<< "$1"
     for i in "${archivo_crear[@]}"; do
         find "$i" > /dev/null
         if [[ "$?" -eq 0 ]] ; then
@@ -55,7 +55,7 @@ crear_archivo(){
 # Funcion para copiar archivo
 copiar_archivo(){
     # Nos permte copiar varios archivos en un dir especifico pero nopueds cambiar el nombre de las copias me refiero
-    read -a archivo_copiar <<< "$archivo"
+    read -a archivo_copiar <<< "$1"
     # Verifica que el archivo fuese copiado
     for i in "${archivo_copiar[@]}"; do
         cp "$i" "$2"
@@ -92,7 +92,7 @@ eliminar_archivos(){
     # Ahora permite o puede eliminarse varios archivos mediante un array
     # Asi que aqui manjeo errores pero del rm se captura su error si es 0 se elimino si es 1 o mas pues no se elimino
     # Y luego valida
-    read -a archivo_eliminar <<< "$archivo"
+    read -a archivo_eliminar <<< "$1"
     # for i in "${archivo_eliminar[@]}"; do  # solo probando si llega al array
     #     printf "%s \n" "$i"
     # done

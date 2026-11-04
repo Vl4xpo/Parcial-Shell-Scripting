@@ -3,7 +3,7 @@
 declare usuario_actual=$(whoami)
 declare -a usuario_grupos
 declare usuario_permisos
-declare fecha=$(date +'%Y-%m-%d-%Hhr-%Mmin')
+declare fecha=$(date +'%Y-%m-%d-%Hhr-%Mmin-%Ssec')
 declare dia=$(date +'%A')
 declare salida="$fecha-sistema.reporte"
 # Para ubiicar dodne se ejecuta y donde guardar la salida osea repote

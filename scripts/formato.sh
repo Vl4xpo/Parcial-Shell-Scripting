@@ -5,7 +5,7 @@
 # Ademmas tiene variables para reporte y logs tanto para la fecha para un mmejor orden
 declare -a nueva_linea
 declare fecha=$(date +'%d-%m-%Y-%Hhr-%Mmin')
-declare fecha_logs=$(date +'%Y-%m-%d-%H:%M')
+declare fecha_logs=$(date +'%Y-%m-%d-%H:%M:%S')
 nombre="$(hostname)"
 declare salida="disco-$nombre.formato"
 declare salida_reporte="disco-$nombre-$fecha.formato"
