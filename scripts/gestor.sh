@@ -125,24 +125,24 @@ while true; do
     case $opcion in
         1)
             printf "Incluye la ubicación\n"
-            read -p "Ingrese el archivo a crear: " archivo
+            read -e -p "Ingrese el archivo a crear: " archivo
             crear_archivo "$archivo"
             ;;
         2)
-            read -p "Ingrese el archivo a copiar: " archivo
-            read -p "Ingrese la ubicación en donde se copiaran: " archivo2
+            read -e -p "Ingrese el archivo a copiar: " archivo
+            read -e -p "Ingrese la ubicación en donde se copiaran: " archivo2
             copiar_archivo "$archivo" "$archivo2"
             ;;
         3)
-            read -p "Ingrese el archivo: " archivo
+            read -e -p "Ingrese el archivo: " archivo
             printf "Permisos del archivo: ' %s '\n" "$(ls -lah "$archivo")"
             # A y imprime salidas pero tiene un print de el valor en octal a rwx
             printf "[NOTA] Leer(r): 4  | Escribir(w) : 2 | Ejecutar(x): 1 \n"
-            read -p "Ingrese los permisos a cambiar: " permisos
+            read -e -p "Ingrese los permisos a cambiar: " permisos
             cambiar_permisos "$permisos" "$archivo"
             ;;
         4)
-            read -p "Ingrese el archivo a eliminar: " archivo
+            read -e -p "Ingrese el archivo a eliminar: " archivo
             eliminar_archivos "$archivo"
             ;;
         5)
