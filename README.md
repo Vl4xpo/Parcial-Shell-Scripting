@@ -61,8 +61,8 @@ Tiene un modo con argumento "automatico" para usarse con el **`tareas_programado
    1. El disco_analizar o reporte
    2. El argumento del modo
 ```
-./scripts/analizador_discos.sh --auto (disco_analizar)
-./scripts/analizador_discos.sh -a  (disco_analizar)
+./scripts/analizador_discos.sh (disco_analizar) --auto
+./scripts/analizador_discos.sh (disco_analizar) -a
 ```
 
 ![salida-scrip4](CosasParaInforme/salida_script4.png)
