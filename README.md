@@ -43,6 +43,8 @@ Cada accion genera un log en **`/logs/gestor.log`**
 ```
 Genera dos archivos en base al comando **`df -hT`** 
 
+![formato](CosasParaInforme/draw_estructura_formato.png)
+
 Archivo guardado en:
 + Analizar: Este es lo necesario para otro scritp **`analizador_discos.sh`** y este cambiara y sera reemplazado
 + Reporte :  Este se mandara a reporte y sera como un bbackup del mismo ademas que su nombre tiene fecha de cuando fue creado.-
