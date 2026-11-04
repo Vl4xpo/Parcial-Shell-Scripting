@@ -1,5 +1,6 @@
 # Scripts Para gestión
-Son 5 scripts que permiten ver - interactuar - analizar los discos del host donde se logra incorporar una estructura para capturar argumentos y redirecciones 
+Es un conjunto de programas o archivos de automatizacion, diseñados para administrar, supervisar, interactuar y analizar los recursos del sistema operativo.  
+Asimismo estos 5 scripts que permiten ver - interactuar - analizar los discos del host donde se lograra incorporar una estructura para capturar argumentos y redirecciones 
 ##### Estructura
 Los scripts usan una estructura a esta:
 
